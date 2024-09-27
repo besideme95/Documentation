@@ -1,0 +1,6 @@
+img {
+    max-width: 300px; /* Adjust the max width as needed */
+    height: auto; /* Keep the aspect ratio */
+    display: incline; /* Optional: makes images block elements */
+    margin: 0 auto; /* Optional: centers the images */
+}
