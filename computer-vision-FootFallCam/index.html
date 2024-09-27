@@ -1,0 +1,943 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="..">
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.38">
+    
+    
+      
+        <title>Object Detection - Documentation for Project in Github</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.8c3ca2c6.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../styles.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Object Detection - Documentation for Project in Github" >
+      
+        <meta  property="og:description"  content="None" >
+      
+        <meta  property="og:image"  content="./assets/images/social/computer-vision-FootFallCam.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="None" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Object Detection - Documentation for Project in Github" >
+      
+        <meta  name="twitter:description"  content="None" >
+      
+        <meta  name="twitter:image"  content="./assets/images/social/computer-vision-FootFallCam.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#object-detection" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Documentation for Project in Github" class="md-header__button md-logo" aria-label="Documentation for Project in Github" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Documentation for Project in Github
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Object Detection
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+    
+  
+  Welcome to MkDocs
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+    
+  
+  Object Detection
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Documentation for Project in Github" class="md-nav__button md-logo" aria-label="Documentation for Project in Github" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Documentation for Project in Github
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Welcome to MkDocs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Object Detection
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Object Detection
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-project-brief" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Project Brief
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Project Brief">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#video" class="md-nav__link">
+    <span class="md-ellipsis">
+      Video
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-setting-up" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Setting Up
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Setting Up">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#virtual-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Virtual Environment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#roboflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Roboflow
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#training-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Training Model
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Overview
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#video-processor-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      Video Processor Class
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Video Processor Class">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#functionality" class="md-nav__link">
+    <span class="md-ellipsis">
+      Functionality
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#object-detection-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      Object Detection Class
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Script
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<div><h1 id="object-detection">Object Detection</h1>
+<h2 id="1-project-brief"><strong>1. Project Brief</strong></h2>
+<p>At FootFallCam, we provide rich footfall all data for retail stores as well as advanced analytics and insights to help business decision making. Our 3D sensor uses computer vision and complex AI algorithm to track footfall accurately. One of our key features is staff identification.</p>
+<p>A person is identification as a staff if s/he is wearing a staff name tag, as shown below.</p>
+<p><img alt="Green Shirt staff" src="../media/green-shirt-staff.png"></p>
+<p>As an AI Engineer, you have a few hundred of video samples from our 3D sensor. Here, you are given 1 sample (“sample.mp4”) which is the view from our 3D sensor. Within the clip, there is a person wearing the tag and walking along the corridor. Below are 2 snapshot instances of the person, all other people are not wearing the tag:</p>
+<p><img alt="black shirt staff" src="../media/black-shirt-staff.png"></p>
+<p><img alt="white shirt staff" src="../media/white-shirt-staff.png"></p>
+<p><strong>Task</strong></p>
+<ul>
+<li>Identify which frames in the clip have the staff present?</li>
+<li>Locate the staff xy coordinates when present in the clip.</li>
+</ul>
+<h3 id="video"><strong>Video</strong></h3>
+<p><div class="video-container"><iframe src="../media/sample-video.mp4" style="position:relative;width:100%;height:22.172vw" frameborder="0" allowfullscreen alt="type:video"></iframe></div></p>
+<h2 id="2-setting-up"><strong>2. Setting Up</strong></h2>
+<h3 id="virtual-environment"><em>Virtual Environment</em></h3>
+<p>To ensure isolated package management and avoid conflicts, create and activate a virtual environment.</p>
+<p><strong>Windows OS</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Create a virtual environment</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">venv</span> <span class="n">myenv</span>  <span class="c1"># Replace 'myenv' with your desired environment name</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># Activate the environment</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="n">myenv</span>\<span class="n">Scripts</span>\<span class="n">activate</span>
+</code></pre></div>
+<p><strong>Install Dependencies</strong></p>
+<p>To install the required libraries, use the <code>requirements.txt</code> file.
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Ensure that your requirements.txt file contains all necessary packages for the project.</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
+</code></pre></div>
+<h3 id="roboflow"><em>Roboflow</em></h3>
+<p>Roboflow is a comprehensive platform designed to simplify the process of building and deploying computer vision models. It provides a suite of tools that cater to various stages of a computer vision project.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Feature</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Use in This Project</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>Annotation</em></td>
+<td>Provides an intuitive interface for annotating images, making it easy to label objects within your dataset for training accurate models.</td>
+<td>Used for image annotation.</td>
+</tr>
+<tr>
+<td><em>Dataset Management</em></td>
+<td>Allows efficient organization and management of datasets, supporting various formats and enabling splitting into training, validation, and test sets.</td>
+<td>Helps in organizing the annotated dataset.</td>
+</tr>
+<tr>
+<td><em>Augmentation</em></td>
+<td>Includes powerful augmentation tools to simulate different conditions and variations in data, enhancing dataset robustness and model performance.</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td><em>Model Training</em></td>
+<td>Integrates with popular machine learning frameworks, offering pre-trained models and the ability to train models directly on the platform.</td>
+<td>Model is trained using YOLO in Jupyter Notebook.</td>
+</tr>
+<tr>
+<td><em>Deployment</em></td>
+<td>Simplifies the process of deploying models to different environments, including cloud services and edge devices.</td>
+<td>N/A</td>
+</tr>
+</tbody>
+</table>
+<p>Note: For full documentation, please visit <a href="https://docs.ultralytics.com/#introduction">Ultralytics</a>.</p>
+<h3 id="training-model"><em>Training Model</em></h3>
+<p>It is recommended to run the notebook in <strong>Google Colab</strong>, as local execution may lead to various issues. Google Colab offers a stable environment with access to TPU, which can greatly accelerate the training process while minimizing these potential problems.</p>
+<p><strong>This code initializes the YOLO environment by</strong></p>
+<ul>
+<li>Installing necessary packages</li>
+<li>Importing required modules </li>
+<li>Clearing the output for a clean workspace.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Code provide by Roboflow</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="n">ultralytics</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="kn">from</span> <span class="nn">ultralytics</span> <span class="kn">import</span> <span class="n">YOLO</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="kn">import</span> <span class="nn">os</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">Image</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="kn">from</span> <span class="nn">IPython</span> <span class="kn">import</span> <span class="n">display</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="n">display</span><span class="o">.</span><span class="n">clear_output</span><span class="p">()</span>
+</code></pre></div>
+<p><strong>Download dataset from Roboflow.</strong> 
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># Sample code for downloading the dataset from Roboflow.</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="n">roboflow</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="kn">from</span> <span class="nn">roboflow</span> <span class="kn">import</span> <span class="n">Roboflow</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="n">rf</span> <span class="o">=</span> <span class="n">Roboflow</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s2">"YOUR_API_KEY"</span><span class="p">)</span>  <span class="c1"># Use your own API key</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="n">project</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">workspace</span><span class="p">()</span><span class="o">.</span><span class="n">project</span><span class="p">(</span><span class="s2">"your-project-name"</span><span class="p">)</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="n">dataset</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">version</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s2">"yolov8"</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>Training the model</strong>
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="err">!</span><span class="n">yolo</span> <span class="n">task</span><span class="o">=</span><span class="n">detect</span> <span class="n">mode</span><span class="o">=</span><span class="n">train</span> <span class="n">model</span><span class="o">=</span><span class="n">yolov8n</span><span class="o">.</span><span class="n">pt</span> <span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="n">dataset</span><span class="o">.</span><span class="n">location</span><span class="p">}</span><span class="o">/</span><span class="n">data</span><span class="o">.</span><span class="n">yaml</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">100</span> <span class="n">imgsz</span><span class="o">=</span><span class="mi">640</span> <span class="n">patience</span><span class="o">=</span><span class="mi">5</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>!yolo</code></td>
+<td>Shell command in Jupyter Notebook or Google Colab that executes the YOLO training process. The <code>!</code> symbol runs shell commands from a Python environment.</td>
+<td>Used to initiate YOLO training.</td>
+</tr>
+<tr>
+<td><code>task=detect</code></td>
+<td>Specifies the type of task:<br> • <code>detect</code> (object detection) <br> • <code>segment</code> (segmentation) <br> • <code>classify</code> (image classification)</td>
+<td><code>detect</code> is used for object detection in this case.</td>
+</tr>
+<tr>
+<td><code>mode=train</code></td>
+<td>Specifies the operation mode:<br> • <code>train</code> indicates training mode,<br> • <code>predict</code> for prediction,<br> • <code>val</code> for validation.</td>
+<td>Indicates the model is in training mode.</td>
+</tr>
+<tr>
+<td><code>model=yolov8n.pt</code></td>
+<td>Defines which pre-trained model to use as the base for training. <br> • <code>yolov8s.pt</code> (small)<br> • <code>yolov8m.pt</code> (medium)<br> • <code>yolov8l.pt</code> (large)<br> • <code>yolov8x.pt</code> (extra-large)</td>
+<td>YOLOv8 is the nano model, a lightweight version designed for faster performance, though it sacrifices some accuracy compared to larger models.</td>
+</tr>
+<tr>
+<td><code>data={dataset.location}/data.yaml</code></td>
+<td>Specifies the path to the dataset configuration file (<code>data.yaml</code>). <code>dataset.location</code> points to the dataset's location in the environment.</td>
+<td>Contains paths to training/validation data and labels.</td>
+</tr>
+<tr>
+<td><code>epochs=100</code></td>
+<td>Sets the number of training epochs <br> <br><em>Note: complete passes through the training dataset.</em></td>
+<td>Model will be trained for 100 epochs.</td>
+</tr>
+<tr>
+<td><code>imgsz=640</code></td>
+<td>Defines the input image size (in pixels) for the model during training.</td>
+<td>Images are resized to 640x640 pixels.</td>
+</tr>
+<tr>
+<td><code>patience=5</code></td>
+<td>Specifies the number of epochs without improvement to wait before early stopping.</td>
+<td>Training stops if no improvement after 5 epochs.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="3-overview"><strong>3. Overview</strong></h2>
+<p>This module provides two classes for processing video files and performing object detection.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Class</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>VideoProcessor</code></td>
+<td>Handles video frame extraction and processing using OpenCV.</td>
+</tr>
+<tr>
+<td><code>ObjectDetection</code></td>
+<td>Leverages YOLO (You Only Look Once) for detecting objects in video files.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="video-processor-class"><em>Video Processor Class</em></h3>
+<p>The <code>VideoProcessor</code> class is designed to process video files using OpenCV. It offers functionality to extract frames from the video and display each frame with additional overlay information.</p>
+<p><strong>Attributes</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>video_path (str)</code></td>
+<td>Path to the input video file.</td>
+</tr>
+<tr>
+<td><code>output_folder (str)</code></td>
+<td>Directory to save the extracted frames.</td>
+</tr>
+<tr>
+<td><code>cap</code></td>
+<td>OpenCV object to capture video frames.</td>
+</tr>
+</tbody>
+</table>
+<p>Initialize the VideoProcessor
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">processor</span> <span class="o">=</span> <span class="n">VideoProcessor</span><span class="p">(</span><span class="n">video_path</span><span class="o">=</span><span class="s1">'input_video.mp4'</span><span class="p">,</span> <span class="n">output_folder</span><span class="o">=</span><span class="s1">'output_frames_folder'</span><span class="p">)</span>
+</code></pre></div>
+<p><em>Extract frames from the video, starting with frame number 0</em>
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">processor</span><span class="o">.</span><span class="n">extract_frames</span><span class="p">()</span>
+</code></pre></div>
+<p><em>Process the video, displaying each frame with an overlay of the frame count</em>
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">processor</span><span class="o">.</span><span class="n">process_video</span><span class="p">()</span>
+</code></pre></div>
+<h4 id="functionality"><strong>Functionality</strong></h4>
+<p><strong><code>extract_frames(self)</code></strong></p>
+<p>Extracts frames from the video file and saves them as image files (<code>.jpg</code>). The frames are saved with filenames formatted as <code>frame_0000.jpg</code>, <code>frame_0001.jpg</code>, etc. The extraction continues until the end of the video.</p>
+<ol>
+<li>Initializes <code>frame_count</code> with the given <code>count</code> parameter.</li>
+<li>Continuously reads frames from the video file while the video capture (<code>self.cap</code>) is open.</li>
+<li>For each frame successfully read (<code>ret</code> is <code>True</code>):<ul>
+<li>Creates a filename for the frame using the current <code>frame_count</code> (e.g., <code>frame_0000.jpg</code>).</li>
+<li>Saves the frame as an image file in the specified output folder using <code>cv2.imwrite()</code>.</li>
+<li>Increments the <code>frame_count</code> for the next frame.</li>
+</ul>
+</li>
+<li>If no frame is read (<code>ret</code> is <code>False</code>), the loop breaks, and the extraction process ends.</li>
+<li>Releases the video capture object and prints the total number of frames extracted.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">def</span> <span class="nf">extract_frames</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span><span class="sd">"""</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="sd">    Extract frames from the video file and save them as image files.</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="sd">    """</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>    <span class="k">while</span> <span class="bp">self</span><span class="o">.</span><span class="n">cap</span><span class="o">.</span><span class="n">isOpened</span><span class="p">():</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>        <span class="n">ret</span><span class="p">,</span> <span class="n">frame</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cap</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>        <span class="k">if</span> <span class="ow">not</span> <span class="n">ret</span><span class="p">:</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>            <span class="k">break</span>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>        <span class="n">frame_filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">output_folder</span><span class="p">,</span> <span class="sa">f</span><span class="s1">'frame_</span><span class="si">{</span><span class="n">frame_count</span><span class="si">:</span><span class="s1">04d</span><span class="si">}</span><span class="s1">.jpg'</span><span class="p">)</span>
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>        <span class="n">cv2</span><span class="o">.</span><span class="n">imwrite</span><span class="p">(</span><span class="n">frame_filename</span><span class="p">,</span> <span class="n">frame</span><span class="p">)</span>
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>        <span class="n">frame_count</span> <span class="o">+=</span> <span class="mi">1</span>
+<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">cap</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Total frames extracted: </span><span class="si">{</span><span class="n">frame_count</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+</code></pre></div>
+<p><strong><code>process_video(self)</code></strong></p>
+<p>Processes the video file by displaying each frame and overlaying the frame count on the video. The video display can be interrupted by pressing the 'q' key.</p>
+<ol>
+<li>Initializes <code>frame_count</code> to <code>0</code>.</li>
+<li>Continuously reads frames from the video file while the video capture (<code>self.cap</code>) is open.</li>
+<li>For each frame successfully read (<code>ret</code> is <code>True</code>):<ul>
+<li>Overlays the current frame count on the frame using <code>cv2.putText()</code>.</li>
+<li>Displays the frame in a window titled 'Sample-Video' using <code>cv2.imshow()</code>.</li>
+<li>Optionally, you can move the window position using <code>cv2.moveWindow()</code> (commented out in the code).</li>
+</ul>
+</li>
+<li>Listens for user input:<ul>
+<li>If the 'q' key is pressed, the loop breaks, and the video display is interrupted.</li>
+</ul>
+</li>
+<li>After the loop ends, releases the video capture object and closes all OpenCV windows using <code>cv2.destroyAllWindows()</code>.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">def</span> <span class="nf">process_video</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span><span class="sd">"""</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="sd">    Process the video file, display each frame, and overlay the frame count.</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="sd">    """</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>    <span class="n">frame_count</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>    <span class="k">while</span> <span class="bp">self</span><span class="o">.</span><span class="n">cap</span><span class="o">.</span><span class="n">isOpened</span><span class="p">():</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>        <span class="n">ret</span><span class="p">,</span> <span class="n">frame</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cap</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>        <span class="k">if</span> <span class="ow">not</span> <span class="n">ret</span><span class="p">:</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>            <span class="k">break</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>        <span class="c1"># Overlay the frame count on the frame</span>
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>        <span class="n">cv2</span><span class="o">.</span><span class="n">putText</span><span class="p">(</span>
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>            <span class="n">frame</span><span class="p">,</span> <span class="sa">f</span><span class="s1">'Frame: </span><span class="si">{</span><span class="n">frame_count</span><span class="si">}</span><span class="s1">'</span><span class="p">,</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">30</span><span class="p">),</span> <span class="n">cv2</span><span class="o">.</span><span class="n">FONT_HERSHEY_SIMPLEX</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">),</span> <span class="mi">2</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">LINE_AA</span><span class="p">)</span>
+<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a>        <span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s1">'Sample-Video'</span><span class="p">,</span> <span class="n">frame</span><span class="p">)</span>
+<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a>        <span class="c1"># cv2.moveWindow('Sample-Video', 0, 0)</span>
+<a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a>
+<a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a>        <span class="k">if</span> <span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xFF</span> <span class="o">==</span> <span class="nb">ord</span><span class="p">(</span><span class="s1">'q'</span><span class="p">):</span>
+<a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a>            <span class="k">break</span>
+<a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a>
+<a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a>        <span class="n">frame_count</span> <span class="o">+=</span> <span class="mi">1</span>
+<a id="__codelineno-9-20" name="__codelineno-9-20" href="#__codelineno-9-20"></a>
+<a id="__codelineno-9-21" name="__codelineno-9-21" href="#__codelineno-9-21"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">cap</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+<a id="__codelineno-9-22" name="__codelineno-9-22" href="#__codelineno-9-22"></a>    <span class="n">cv2</span><span class="o">.</span><span class="n">destroyAllWindows</span><span class="p">()</span>
+</code></pre></div>
+<p><strong><code>__del__(self)</code></strong></p>
+<p>Releases the video capture object and destroys all OpenCV windows when the <code>VideoProcessor</code> object is deleted.</p>
+<ol>
+<li>Checks if the <code>VideoProcessor</code> object has a <code>cap</code> attribute and if it is currently opened.</li>
+<li>If <code>self.cap</code> exists and is open (<code>self.cap.isOpened()</code> returns <code>True</code>), the video capture object is released using <code>self.cap.release()</code>.</li>
+<li>Closes all OpenCV windows using <code>cv2.destroyAllWindows()</code>.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">def</span> <span class="fm">__del__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">    </span><span class="sd">"""</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="sd">    Release the video capture and destroy all OpenCV windows.</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="sd">    """</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">'cap'</span><span class="p">)</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">cap</span><span class="o">.</span><span class="n">isOpened</span><span class="p">():</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">cap</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>    <span class="n">cv2</span><span class="o">.</span><span class="n">destroyAllWindows</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="object-detection-class"><strong>Object Detection Class</strong></h3>
+<p>A class to perform object detection on a video file using a YOLO model.</p>
+<p><strong>Attributes</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>video_path</code> (str)</td>
+<td>Path to the input video file.</td>
+</tr>
+<tr>
+<td><code>model</code> (YOLO)</td>
+<td>YOLO model loaded from the specified <code>model_path</code>. Used for performing object detection on video frames.</td>
+</tr>
+</tbody>
+</table>
+<p>Initializes the <code>ObjectDetection</code> object with the path to the video file and the path to the YOLO model.
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># Create an ObjectDetection instance with the video path and model path</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="n">detector</span> <span class="o">=</span> <span class="n">ObjectDetection</span><span class="p">(</span><span class="s1">'input_video.mp4'</span><span class="p">,</span> <span class="s1">'yolov8n.pt'</span><span class="p">)</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="n">detector</span><span class="o">.</span><span class="n">detect_objects</span><span class="p">()</span>
+</code></pre></div>
+<h2 id="4-script"><strong>4. Script</strong></h2>
+<p>Define the path to the video file, output folder, and model path
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="kn">from</span> <span class="nn">business_logic</span> <span class="kn">import</span> <span class="o">*</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="n">video_path</span> <span class="o">=</span> <span class="s1">'sample.mp4'</span>  <span class="c1"># Path to the input video file</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="n">output_folder</span> <span class="o">=</span> <span class="s1">'extracted_frames'</span>  <span class="c1"># Folder to save extracted frames</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="n">model_path</span> <span class="o">=</span> <span class="s1">'model'</span>  <span class="c1"># Path to the YOLO model</span>
+</code></pre></div>
+<p>Create VideoProcessor instance and frame extraction and video processing
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="n">processor</span> <span class="o">=</span> <span class="n">VideoProcessor</span><span class="p">(</span><span class="n">video_path</span><span class="p">,</span> <span class="n">output_folder</span><span class="p">)</span>  <span class="c1"># Create VideoProcessor instance</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="n">processor</span><span class="o">.</span><span class="n">process_video</span><span class="p">()</span>  <span class="c1"># Display the video with frame count overlay</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="n">processor</span><span class="o">.</span><span class="n">extract_frames</span><span class="p">()</span>  <span class="c1"># Extract frames and save them as images</span>
+</code></pre></div>
+<p>Create ObjectDetection instance and detect objects in the video
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="n">detector</span> <span class="o">=</span> <span class="n">ObjectDetection</span><span class="p">(</span><span class="n">video_path</span><span class="p">,</span> <span class="n">model_path</span><span class="p">)</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="n">detector</span><span class="o">.</span><span class="n">detect_objects</span><span class="p">()</span>
+</code></pre></div></div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2024 <a href="https://github.com/besideme95"  target="_blank" rel="noopener">Sam Chan</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/besideme95" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1M480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2m-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3m-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/samchan95/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.sections", "toc.integrate", "navigation.top", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d6f25eb3.min.js"></script>
+      
+    
+  </body>
+</html>
