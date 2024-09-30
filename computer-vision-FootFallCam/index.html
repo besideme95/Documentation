@@ -491,6 +491,30 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#image-retrieval-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      Image Retrieval Class
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Image Retrieval Class">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#functionality_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Functionality
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -745,16 +769,24 @@
 <p><strong><code>extract_frames(self)</code></strong></p>
 <p>Extracts frames from the video file and saves them as image files (<code>.jpg</code>). The frames are saved with filenames formatted as <code>frame_0000.jpg</code>, <code>frame_0001.jpg</code>, etc. The extraction continues until the end of the video.</p>
 <ol>
-<li>Initializes <code>frame_count</code> with the given <code>count</code> parameter.</li>
-<li>Continuously reads frames from the video file while the video capture (<code>self.cap</code>) is open.</li>
-<li>For each frame successfully read (<code>ret</code> is <code>True</code>):<ul>
+<li>
+<p>Initializes <code>frame_count</code> with the given <code>count</code> parameter.</p>
+</li>
+<li>
+<p>Continuously reads frames from the video file while the video capture (<code>self.cap</code>) is open.</p>
+</li>
+<li>
+<p>For each frame successfully read (<code>ret</code> is <code>True</code>):</p>
+<ul>
 <li>Creates a filename for the frame using the current <code>frame_count</code> (e.g., <code>frame_0000.jpg</code>).</li>
 <li>Saves the frame as an image file in the specified output folder using <code>cv2.imwrite()</code>.</li>
 <li>Increments the <code>frame_count</code> for the next frame.</li>
+<li>If no frame is read (<code>ret</code> is <code>False</code>), the loop breaks, and the extraction process ends.</li>
 </ul>
 </li>
-<li>If no frame is read (<code>ret</code> is <code>False</code>), the loop breaks, and the extraction process ends.</li>
-<li>Releases the video capture object and prints the total number of frames extracted.</li>
+<li>
+<p>Releases the video capture object and prints the total number of frames extracted.</p>
+</li>
 </ol>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">def</span> <span class="nf">extract_frames</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span><span class="sd">"""</span>
@@ -774,19 +806,29 @@
 <p><strong><code>process_video(self)</code></strong></p>
 <p>Processes the video file by displaying each frame and overlaying the frame count on the video. The video display can be interrupted by pressing the 'q' key.</p>
 <ol>
-<li>Initializes <code>frame_count</code> to <code>0</code>.</li>
-<li>Continuously reads frames from the video file while the video capture (<code>self.cap</code>) is open.</li>
-<li>For each frame successfully read (<code>ret</code> is <code>True</code>):<ul>
+<li>
+<p>Initializes <code>frame_count</code> to <code>0</code>.</p>
+</li>
+<li>
+<p>Continuously reads frames from the video file while the video capture (<code>self.cap</code>) is open.</p>
+</li>
+<li>
+<p>For each frame successfully read (<code>ret</code> is <code>True</code>):</p>
+<ul>
 <li>Overlays the current frame count on the frame using <code>cv2.putText()</code>.</li>
 <li>Displays the frame in a window titled 'Sample-Video' using <code>cv2.imshow()</code>.</li>
 <li>Optionally, you can move the window position using <code>cv2.moveWindow()</code> (commented out in the code).</li>
 </ul>
 </li>
-<li>Listens for user input:<ul>
+<li>
+<p>Listens for user input:</p>
+<ul>
 <li>If the 'q' key is pressed, the loop breaks, and the video display is interrupted.</li>
 </ul>
 </li>
-<li>After the loop ends, releases the video capture object and closes all OpenCV windows using <code>cv2.destroyAllWindows()</code>.</li>
+<li>
+<p>After the loop ends, releases the video capture object and closes all OpenCV windows using <code>cv2.destroyAllWindows()</code>.</p>
+</li>
 </ol>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">def</span> <span class="nf">process_video</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span><span class="sd">"""</span>
@@ -855,7 +897,9 @@
 <h4 id="functionality_1"><strong>Functionality</strong></h4>
 <p><strong><code>detect_objects(self)</code></strong></p>
 <ol>
-<li>Invokes the object detection model on the specified video or image source (self.video_path).</li>
+<li>
+<p>Invokes the object detection model on the specified video or image source (self.video_path).</p>
+</li>
 <li>
 <p>Sets the following parameters for the model's prediction:</p>
 <ul>
@@ -888,23 +932,199 @@
 <a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>
 <a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">"Object detection completed."</span><span class="p">)</span>
 </code></pre></div>
+<h3 id="image-retrieval-class"><strong>Image Retrieval Class</strong></h3>
+<p>A class to identify the image from a dataset that is most similar to the target image.</p>
+<p><strong>Attributes</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>Attribute</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>self.sift</code></td>
+<td>Instance of the SIFT feature extractor for detecting key points and computing descriptors.</td>
+</tr>
+<tr>
+<td><code>self.flann</code></td>
+<td>Instance of the FLANN-based matcher for matching descriptors between images.</td>
+</tr>
+<tr>
+<td><code>self.index_params</code></td>
+<td>Parameters for FLANN matching (e.g., algorithm and number of trees).</td>
+</tr>
+<tr>
+<td><code>self.search_params</code></td>
+<td>Search parameters for FLANN matching (e.g., number of checks).</td>
+</tr>
+</tbody>
+</table>
+<p>Initializes the <code>ImageRetriever</code> object with the path to the images folder and targeted image.
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1"># if __name__ == "__main__":</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>    <span class="n">target_image_path</span> <span class="o">=</span> <span class="s1">'media</span><span class="se">\\</span><span class="s1">project</span><span class="se">\\</span><span class="s1">white-shirt-staff.png'</span>  <span class="c1"># Path to the image you want to find</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>    <span class="n">dataset_folder</span> <span class="o">=</span> <span class="s1">'media</span><span class="se">\\</span><span class="s1">extracted_frames'</span>             <span class="c1"># Folder containing the sample of 100 images</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>    <span class="c1"># Create an instance of ImageRetriever</span>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>    <span class="n">image_retriever</span> <span class="o">=</span> <span class="n">ImageRetriever</span><span class="p">()</span>
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>    <span class="n">best_match</span> <span class="o">=</span> <span class="n">image_retriever</span><span class="o">.</span><span class="n">find_best_match</span><span class="p">(</span><span class="n">target_image_path</span><span class="p">,</span> <span class="n">dataset_folder</span><span class="p">)</span>
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>
+<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"The image most similar to the target is: </span><span class="si">{</span><span class="n">best_match</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="functionality_2"><strong>Functionality</strong></h4>
+<p><strong><code>extract_sift_features(self, image_path)</code></strong></p>
+<ol>
+<li>
+<p>Read the Image by using OpenCV's <code>imread</code> to load the image in grayscale mode for feature extraction.</p>
+<ul>
+<li><code>image_path</code>: Path to the image file.</li>
+<li><code>cv2.IMREAD_GRAYSCALE</code>: Loads the image in grayscale to simplify data and focus on structure.</li>
+</ul>
+</li>
+<li>
+<p>Check Image Load Success</p>
+<ul>
+<li>If <code>image is None</code>, the image could not be read (e.g., incorrect path).</li>
+<li>Provides feedback for debugging by indicating the issue with the image path.</li>
+</ul>
+</li>
+<li>
+<p>Extract Features with by using SIFT (<code>detectAndCompute</code>) to extract feature.</p>
+<ul>
+<li><code>keypoints</code>: List of important locations/features detected.</li>
+<li><code>descriptors</code>: Numerical representation of the keypoints for matching.</li>
+</ul>
+</li>
+<li>
+<p>Return Features</p>
+<ul>
+<li>Returns the extracted keypoints and descriptors as a tuple for further processing.</li>
+</ul>
+</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">def</span> <span class="nf">extract_sift_features</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">image_path</span><span class="p">):</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>    <span class="n">image</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">image_path</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">IMREAD_GRAYSCALE</span><span class="p">)</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>    <span class="k">if</span> <span class="n">image</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Could not read image at path: </span><span class="si">{</span><span class="n">image_path</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>    <span class="n">keypoints</span><span class="p">,</span> <span class="n">descriptors</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sift</span><span class="o">.</span><span class="n">detectAndCompute</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>    <span class="k">return</span> <span class="n">keypoints</span><span class="p">,</span> <span class="n">descriptors</span>
+</code></pre></div>
+<p><strong><code>match_features(self, descriptors1, descriptors2)</code></strong></p>
+<ol>
+<li>
+<p>Match features between two sets of descriptors using the FLANN-based matcher.</p>
+<ul>
+<li>descriptors1: Descriptors of the first image.</li>
+<li>descriptors2: Descriptors of the second image.</li>
+</ul>
+</li>
+<li>
+<p>Check Matches</p>
+<ul>
+<li>Uses FLANN's <code>knnMatch</code> to find the two closest matches (k=2) for each descriptor in descriptors1.</li>
+</ul>
+</li>
+<li>
+<p>Filter Good Matches</p>
+<ul>
+<li>Applies Lowe's ratio test to filter out poor matches.</li>
+<li>good_matches: List of matches where the distance of the best match is less than 0.7 times the distance of the second-best match.</li>
+</ul>
+</li>
+<li>
+<p>Return Matches Count</p>
+<ul>
+<li>Returns the number of good matches found.</li>
+</ul>
+</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="k">def</span> <span class="nf">match_features</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">descriptors1</span><span class="p">,</span> <span class="n">descriptors2</span><span class="p">):</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>    <span class="n">matches</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">flann</span><span class="o">.</span><span class="n">knnMatch</span><span class="p">(</span><span class="n">descriptors1</span><span class="p">,</span> <span class="n">descriptors2</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>    <span class="c1"># Apply Lowe's ratio test to filter good matches</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>    <span class="n">good_matches</span> <span class="o">=</span> <span class="p">[</span><span class="n">m</span> <span class="k">for</span> <span class="n">m</span><span class="p">,</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">matches</span> <span class="k">if</span> <span class="n">m</span><span class="o">.</span><span class="n">distance</span> <span class="o">&lt;</span> <span class="mf">0.7</span> <span class="o">*</span> <span class="n">n</span><span class="o">.</span><span class="n">distance</span><span class="p">]</span>
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a>    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">good_matches</span><span class="p">)</span>
+</code></pre></div>
+<p><strong><code>find_best_match(self, target_image_path, dataset_folder)</code></strong></p>
+<ol>
+<li>
+<p>Find the image in the dataset that best matches the target image.</p>
+<ul>
+<li>target_image_path: Path to the target image.</li>
+<li>dataset_folder: Path to the folder containing dataset images.</li>
+</ul>
+</li>
+<li>
+<p>Extract Features from Target Image</p>
+<ul>
+<li>Calls <code>extract_sift_features</code> to get keypoints and descriptors of the target image.</li>
+<li>target_keypoints: Keypoints of the target image.</li>
+<li>target_descriptors: Descriptors of the target image.</li>
+</ul>
+</li>
+<li>
+<p>Initialize Best Match Variables</p>
+<ul>
+<li>best_match_count: Counter for the best match found (initially 0).</li>
+<li>best_match_image: Placeholder for the filename of the best-matching image (initially None).</li>
+</ul>
+</li>
+<li>
+<p>Iterate Through Dataset Images</p>
+<ul>
+<li>For each image file in the dataset folder:</li>
+<li>Constructs the full path for the image.</li>
+<li>Calls <code>extract_sift_features</code> to get descriptors of the dataset image.</li>
+<li>Calls <code>match_features</code> to compare target descriptors with dataset descriptors.</li>
+<li>If the current match count exceeds the best match count:</li>
+<li>Update best_match_count and best_match_image with the current image.</li>
+</ul>
+</li>
+<li>
+<p>Return Best Match</p>
+<ul>
+<li>Returns the filename of the best-matching image found in the dataset.</li>
+</ul>
+</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="k">def</span> <span class="nf">find_best_match</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target_image_path</span><span class="p">,</span> <span class="n">dataset_folder</span><span class="p">):</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>    <span class="n">target_keypoints</span><span class="p">,</span> <span class="n">target_descriptors</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">extract_sift_features</span><span class="p">(</span><span class="n">target_image_path</span><span class="p">)</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>    <span class="n">best_match_count</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>    <span class="n">best_match_image</span> <span class="o">=</span> <span class="kc">None</span>
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>    <span class="k">for</span> <span class="n">image_file</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">dataset_folder</span><span class="p">):</span>
+<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>        <span class="n">image_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dataset_folder</span><span class="p">,</span> <span class="n">image_file</span><span class="p">)</span>
+<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a>
+<a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a>        <span class="n">_</span><span class="p">,</span> <span class="n">dataset_descriptors</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">extract_sift_features</span><span class="p">(</span><span class="n">image_path</span><span class="p">)</span>
+<a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a>
+<a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a>        <span class="n">match_count</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">match_features</span><span class="p">(</span><span class="n">target_descriptors</span><span class="p">,</span> <span class="n">dataset_descriptors</span><span class="p">)</span>
+<a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a>
+<a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a>        <span class="k">if</span> <span class="n">match_count</span> <span class="o">&gt;</span> <span class="n">best_match_count</span><span class="p">:</span>
+<a id="__codelineno-16-15" name="__codelineno-16-15" href="#__codelineno-16-15"></a>            <span class="n">best_match_count</span> <span class="o">=</span> <span class="n">match_count</span>
+<a id="__codelineno-16-16" name="__codelineno-16-16" href="#__codelineno-16-16"></a>            <span class="n">best_match_image</span> <span class="o">=</span> <span class="n">image_file</span>
+<a id="__codelineno-16-17" name="__codelineno-16-17" href="#__codelineno-16-17"></a>
+<a id="__codelineno-16-18" name="__codelineno-16-18" href="#__codelineno-16-18"></a>    <span class="k">return</span> <span class="n">best_match_image</span>
+</code></pre></div>
 <h2 id="4-script"><strong>4. Script</strong></h2>
 <p>Define the path to the video file, output folder, and model path
-</p><div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="kn">from</span> <span class="nn">business_logic</span> <span class="kn">import</span> <span class="o">*</span>
-<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>
-<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>
-<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="n">video_path</span> <span class="o">=</span> <span class="s1">'sample.mp4'</span>  <span class="c1"># Path to the input video file</span>
-<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="n">output_folder</span> <span class="o">=</span> <span class="s1">'extracted_frames'</span>  <span class="c1"># Folder to save extracted frames</span>
-<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="n">model_path</span> <span class="o">=</span> <span class="s1">'model'</span>  <span class="c1"># Path to the YOLO model</span>
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="kn">from</span> <span class="nn">business_logic</span> <span class="kn">import</span> <span class="o">*</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="n">video_path</span> <span class="o">=</span> <span class="s1">'sample.mp4'</span>  <span class="c1"># Path to the input video file</span>
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="n">output_folder</span> <span class="o">=</span> <span class="s1">'extracted_frames'</span>  <span class="c1"># Folder to save extracted frames</span>
+<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="n">model_path</span> <span class="o">=</span> <span class="s1">'model'</span>  <span class="c1"># Path to the YOLO model</span>
 </code></pre></div>
 <p>Create VideoProcessor instance and frame extraction and video processing
-</p><div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="n">processor</span> <span class="o">=</span> <span class="n">VideoProcessor</span><span class="p">(</span><span class="n">video_path</span><span class="p">,</span> <span class="n">output_folder</span><span class="p">)</span>  <span class="c1"># Create VideoProcessor instance</span>
-<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="n">processor</span><span class="o">.</span><span class="n">process_video</span><span class="p">()</span>  <span class="c1"># Display the video with frame count overlay</span>
-<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="n">processor</span><span class="o">.</span><span class="n">extract_frames</span><span class="p">()</span>  <span class="c1"># Extract frames and save them as images</span>
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="n">processor</span> <span class="o">=</span> <span class="n">VideoProcessor</span><span class="p">(</span><span class="n">video_path</span><span class="p">,</span> <span class="n">output_folder</span><span class="p">)</span>  <span class="c1"># Create VideoProcessor instance</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="n">processor</span><span class="o">.</span><span class="n">process_video</span><span class="p">()</span>  <span class="c1"># Display the video with frame count overlay</span>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="n">processor</span><span class="o">.</span><span class="n">extract_frames</span><span class="p">()</span>  <span class="c1"># Extract frames and save them as images</span>
 </code></pre></div>
 <p>Create ObjectDetection instance and detect objects in the video
-</p><div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="n">detector</span> <span class="o">=</span> <span class="n">ObjectDetection</span><span class="p">(</span><span class="n">video_path</span><span class="p">,</span> <span class="n">model_path</span><span class="p">)</span>
-<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="n">detector</span><span class="o">.</span><span class="n">detect_objects</span><span class="p">()</span>
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="n">detector</span> <span class="o">=</span> <span class="n">ObjectDetection</span><span class="p">(</span><span class="n">video_path</span><span class="p">,</span> <span class="n">model_path</span><span class="p">)</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="n">detector</span><span class="o">.</span><span class="n">detect_objects</span><span class="p">()</span>
 </code></pre></div>
 <h2 id="5-results"><strong>5. Results</strong></h2>
 <p>Currently, multiple object detection models are implemented, with the nano version and the larger version being actively used to produce detection results as shown below:</p>
