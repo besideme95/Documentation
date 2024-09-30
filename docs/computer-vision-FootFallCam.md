@@ -254,6 +254,37 @@ detector = ObjectDetection('input_video.mp4', 'yolov8n.pt')
 detector.detect_objects()
 ```
 
+#### **Functionality**
+
+**`detect_objects(self)`**
+
+1. Invokes the object detection model on the specified video or image source (self.video_path).
+2. Sets the following parameters for the model's prediction:
+    * `show=True` : Displays the detection results in a window.
+    * `conf=0.4` : Uses a confidence threshold of 0.4 for detected objects.
+    * `save=True` : Saves the detection results.
+    * `stream=True` : Streams detection results in real-time.
+
+3. Iterates over the detection results for each frame or image.
+    * Extracts bounding boxes using `r.boxes`.
+    * Extracts segmentation masks using `r.masks`.
+    * Extracts class probabilities using `r.probs`.
+
+4. Prints "Object detection completed" after processing all frames/images.
+
+```py
+def detect_objects(self):
+    results = self.model(
+        source=self.video_path, show=True, conf=0.4, save=True, stream=True)
+
+    for r in results:
+        boxes = r.boxes  # Bounding box outputs
+        masks = r.masks  # Segmentation masks outputs
+        probs = r.probs  # Class probabilities for classification outputs
+
+    print("Object detection completed.")
+```
+
 ## **4. Script**
 
 Define the path to the video file, output folder, and model path
@@ -278,3 +309,20 @@ Create ObjectDetection instance and detect objects in the video
 detector = ObjectDetection(video_path, model_path)
 detector.detect_objects()
 ```
+
+## **5. Results**
+
+Currently, multiple object detection models are implemented, with the nano version and the larger version being actively used to produce detection results as shown below:
+
+1. YOLO 8X Model (Human Detection)
+![type:video](media/human_model_8x.pt.mp4)
+
+2. YOLO 8X Model (Nametag Detection)
+![type:video](media/nametag_8x_v1.pt.mp4)
+
+3. YOLO 8X Model (Targeted Staff)
+![type:video](media/targeted_staff_8x_v1.pt.mp4)
+
+4. YOLO 8N Model (Targeted staff with 100 epoch)
+![type:video](media/targeted_staff_8n_v2(100epoch).pt.mp4)
+
