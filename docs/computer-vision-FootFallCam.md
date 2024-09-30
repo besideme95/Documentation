@@ -153,12 +153,16 @@ processor.process_video()
 Extracts frames from the video file and saves them as image files (`.jpg`). The frames are saved with filenames formatted as `frame_0000.jpg`, `frame_0001.jpg`, etc. The extraction continues until the end of the video.
 
 1. Initializes `frame_count` with the given `count` parameter.
+
 2. Continuously reads frames from the video file while the video capture (`self.cap`) is open.
+
 3. For each frame successfully read (`ret` is `True`):
+
     * Creates a filename for the frame using the current `frame_count` (e.g., `frame_0000.jpg`).
     * Saves the frame as an image file in the specified output folder using `cv2.imwrite()`.
     * Increments the `frame_count` for the next frame.
 4. If no frame is read (`ret` is `False`), the loop breaks, and the extraction process ends.
+
 5. Releases the video capture object and prints the total number of frames extracted.
 
 ```python
@@ -183,13 +187,17 @@ def extract_frames(self):
 Processes the video file by displaying each frame and overlaying the frame count on the video. The video display can be interrupted by pressing the 'q' key.
 
 1. Initializes `frame_count` to `0`.
+
 2. Continuously reads frames from the video file while the video capture (`self.cap`) is open.
+
 3. For each frame successfully read (`ret` is `True`):
     * Overlays the current frame count on the frame using `cv2.putText()`.
     * Displays the frame in a window titled 'Sample-Video' using `cv2.imshow()`.
     * Optionally, you can move the window position using `cv2.moveWindow()` (commented out in the code).
+
 4. Listens for user input:
     * If the 'q' key is pressed, the loop breaks, and the video display is interrupted.
+
 5. After the loop ends, releases the video capture object and closes all OpenCV windows using `cv2.destroyAllWindows()`.
 
 ```python
@@ -259,6 +267,7 @@ detector.detect_objects()
 **`detect_objects(self)`**
 
 1. Invokes the object detection model on the specified video or image source (self.video_path).
+
 2. Sets the following parameters for the model's prediction:
     * `show=True` : Displays the detection results in a window.
     * `conf=0.4` : Uses a confidence threshold of 0.4 for detected objects.
@@ -283,6 +292,135 @@ def detect_objects(self):
         probs = r.probs  # Class probabilities for classification outputs
 
     print("Object detection completed.")
+```
+
+### **Image Retrieval Class**
+
+A class to identify the image from a dataset that is most similar to the target image.
+
+**Attributes**
+
+| **Attribute**            | **Description**                                                                                     |
+|--------------------------|-----------------------------------------------------------------------------------------------------|
+| `self.sift`              | Instance of the SIFT feature extractor for detecting key points and computing descriptors.         |
+| `self.flann`             | Instance of the FLANN-based matcher for matching descriptors between images.                        |
+| `self.index_params`      | Parameters for FLANN matching (e.g., algorithm and number of trees).                               |
+| `self.search_params`     | Search parameters for FLANN matching (e.g., number of checks).                                     |
+
+
+
+Initializes the `ImageRetriever` object with the path to the images folder and targeted image.
+```python
+# if __name__ == "__main__":
+    target_image_path = 'media\\project\\white-shirt-staff.png'  # Path to the image you want to find
+    dataset_folder = 'media\\extracted_frames'             # Folder containing the sample of 100 images
+
+    # Create an instance of ImageRetriever
+    image_retriever = ImageRetriever()
+    best_match = image_retriever.find_best_match(target_image_path, dataset_folder)
+
+    print(f"The image most similar to the target is: {best_match}")
+```
+
+#### **Functionality**
+
+**`extract_sift_features(self, image_path)`**
+
+1. Read the Image by using OpenCV's `imread` to load the image in grayscale mode for feature extraction.
+    * `image_path`: Path to the image file.
+    * `cv2.IMREAD_GRAYSCALE`: Loads the image in grayscale to simplify data and focus on structure.
+
+2. Check Image Load Success
+    * If `image is None`, the image could not be read (e.g., incorrect path).
+    * Provides feedback for debugging by indicating the issue with the image path.
+
+3. Extract Features with by using SIFT (`detectAndCompute`) to extract feature.
+    * `keypoints`: List of important locations/features detected.
+    * `descriptors`: Numerical representation of the keypoints for matching.
+
+4. Return Features
+    * Returns the extracted keypoints and descriptors as a tuple for further processing.
+
+```python
+def extract_sift_features(self, image_path):
+    image = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE)
+    if image is None:
+        raise ValueError(f"Could not read image at path: {image_path}")
+    keypoints, descriptors = self.sift.detectAndCompute(image, None)
+    return keypoints, descriptors
+```
+
+**`match_features(self, descriptors1, descriptors2)`**
+
+1. Match features between two sets of descriptors using the FLANN-based matcher.
+    * descriptors1: Descriptors of the first image.
+    * descriptors2: Descriptors of the second image.
+
+2. Check Matches
+    * Uses FLANN's `knnMatch` to find the two closest matches (k=2) for each descriptor in descriptors1.
+
+3. Filter Good Matches
+    * Applies Lowe's ratio test to filter out poor matches.
+    * good_matches: List of matches where the distance of the best match is less than 0.7 times the distance of the second-best match.
+
+4. Return Matches Count
+    * Returns the number of good matches found.
+
+```python
+def match_features(self, descriptors1, descriptors2):
+    matches = self.flann.knnMatch(descriptors1, descriptors2, k=2)
+
+    # Apply Lowe's ratio test to filter good matches
+    good_matches = [m for m, n in matches if m.distance < 0.7 * n.distance]
+    
+    return len(good_matches)
+```
+
+**`find_best_match(self, target_image_path, dataset_folder)`**
+
+1. Find the image in the dataset that best matches the target image.
+    * target_image_path: Path to the target image.
+    * dataset_folder: Path to the folder containing dataset images.
+
+2. Extract Features from Target Image
+    * Calls `extract_sift_features` to get keypoints and descriptors of the target image.
+    * target_keypoints: Keypoints of the target image.
+    * target_descriptors: Descriptors of the target image.
+
+3. Initialize Best Match Variables
+    * best_match_count: Counter for the best match found (initially 0).
+    * best_match_image: Placeholder for the filename of the best-matching image (initially None).
+
+4. Iterate Through Dataset Images
+    * For each image file in the dataset folder:
+    * Constructs the full path for the image.
+    * Calls `extract_sift_features` to get descriptors of the dataset image.
+    * Calls `match_features` to compare target descriptors with dataset descriptors.
+    * If the current match count exceeds the best match count:
+    * Update best_match_count and best_match_image with the current image.
+
+5. Return Best Match
+    * Returns the filename of the best-matching image found in the dataset.
+
+```python
+def find_best_match(self, target_image_path, dataset_folder):
+    target_keypoints, target_descriptors = self.extract_sift_features(target_image_path)
+    
+    best_match_count = 0
+    best_match_image = None
+    
+    for image_file in os.listdir(dataset_folder):
+        image_path = os.path.join(dataset_folder, image_file)
+        
+        _, dataset_descriptors = self.extract_sift_features(image_path)
+        
+        match_count = self.match_features(target_descriptors, dataset_descriptors)
+        
+        if match_count > best_match_count:
+            best_match_count = match_count
+            best_match_image = image_file
+    
+    return best_match_image
 ```
 
 ## **4. Script**
